@@ -3,10 +3,12 @@ import string, math
 import re
 
 def applypostagging(keywordsentencedict):
+    print(str(len(keywordsentencedict)) + " candidate keywords")
     #Grab training counts
     trainset = open("POS.train.large",'r')
     postoworddict = {}
     vocab = []
+    print('training...')
     for line in trainset:
         line = line.split(" ")
         for wordposinstance in line:
@@ -30,11 +32,12 @@ def applypostagging(keywordsentencedict):
 
     #Unique vocab
     vocab = list(set(vocab))
-
+    print('summing pos tags...')
     totalpostags = 0
     for key in postoworddict.keys():
         totalpostags += sum(postoworddict[key].values())
 
+    print('iterating over sentences containing keywords...')
     #Iterate through each of the sentences containing a keyword
     for keyword in keywordsentencedict:
         sentenceslist = keywordsentencedict[keyword]
