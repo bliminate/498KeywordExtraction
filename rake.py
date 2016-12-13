@@ -27,8 +27,9 @@ def get_candidate_keywords(stop_regex, sentences):
     for sentence in sentences:
         sentence_keywords = stop_regex.split(sentence)
         for keyword in sentence_keywords:
+            keyword = keyword.strip()
             if keyword != '':
-                candidate_keywords.append(keyword.strip())
+                candidate_keywords.append(keyword)
     return candidate_keywords
 
 def make_keyword_sentences_dict(keywords, sentences):
@@ -45,3 +46,4 @@ def RAKE(stoplist_file, text_file):
     candidate_keywords = get_candidate_keywords(stop_regex, sentences)
     keyword_sentences = make_keyword_sentences_dict(candidate_keywords, sentences)
     return keyword_sentences
+
