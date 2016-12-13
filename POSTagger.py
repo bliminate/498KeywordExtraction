@@ -41,9 +41,11 @@ def applypostagging(keywordsentencedict):
     count = 1
     #Iterate through each of the sentences containing a keyword
     for keyword in keywordsentencedict:
-        print(count)
-        count += 1
+        print('keyword: ' + keyword)
+        #print(count)
+        #count += 1
         sentenceslist = keywordsentencedict[keyword]
+        print(str(len(sentenceslist)) + " sentences to parse for the keyword...")
         #Iterate through each sentence
         for sentence in sentenceslist:
             sentencetags = []
