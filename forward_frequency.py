@@ -40,7 +40,7 @@ def forward_freq_calc(dictionary, textfile):
 				for blocks in block:
 					if key == blocks:
 						#increase frequency once per paragraph if word is found
-						if occurred = false:
+						if occurred == false:
 							freq+=1
 							occurred = true
 
