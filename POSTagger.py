@@ -102,6 +102,9 @@ def applypostagging(keywordsentencedict):
             startingindexofkeyword = sentence.find(keyword)
             tokenindices = [startingindexofkeyword + i for i in range(0, len(tokensfromkeyword))]
             nounadjectiveverb = False
+            print(tokenindices)
+            print(len(tokensfromkeyword))
+            print(sentencetags)
             for i in tokenindices:
                 if 'NN' == sentencetags[i] or 'JJ' == sentencetags[i] or 'VB' == sentencetags[i] or 'VBD' == sentencetags[i] or 'VBG' == sentencetags[i] or 'VBN' == sentencetags[i] or 'VBP' == sentencetags[i] or 'VBZ' == sentencetags[i]:
                     nounadjectiveverb = True
