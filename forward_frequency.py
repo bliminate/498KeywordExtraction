@@ -14,13 +14,13 @@ def forward_freq_calc(dictionary, textfile):
 	paragraphs = 0
 	occurred = false
 
-	#get total # of paragraphs within chunk
+	#grab total # of paragraphs within textfile
 	while line:
 		#for each class chunk
 		while line.strip() != '':
-			paragraphs+=1
+			line = t.readline()
+		paragraphs+=1
 		line = t.readline()
-
 
 	t = open(textfile, "r")
 	line = t.readline()
@@ -35,10 +35,10 @@ def forward_freq_calc(dictionary, textfile):
 			while line.strip() != '':
 				line = line.strip()
 				if line == "exit": break
-				block = nltk.tokenize.word_tokenize(line)
+				sentence = nltk.tokenize.word_tokenize(line)
 				
-				for blocks in block:
-					if key == blocks:
+				for word in sentence:
+					if key == word:
 						#increase frequency once per paragraph if word is found
 						if occurred == false:
 							freq+=1
