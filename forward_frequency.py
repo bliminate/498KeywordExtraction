@@ -53,7 +53,7 @@ def forward_freq_calc(dictionary, textfile):
 			line = t.readline()
 
 		#after going through entire doc, calculate forward frequency and store
-		ffreq = dictionary[key]*freq/paragraphs
+		ffreq = float(dictionary[key])*float(freq)/float(paragraphs)
 
 		#add keyword candidate to dictionary with value of its forward frequency
 		ffreq_dict[key] = ffreq
