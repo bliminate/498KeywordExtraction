@@ -39,7 +39,9 @@ def make_keyword_sentences_dict(keywords, sentences):
                 keyword_sentences[keyword].append(sentence.strip())
     return keyword_sentences
 
-stop_regex = build_regex("stoplist.txt")
-sentences = get_sentences("documents/287.txt")
-candidate_keywords = get_candidate_keywords(stop_regex, sentences)
-keyword_sentences = make_keyword_sentences_dict(candidate_keywords, sentences)
+def RAKE(stoplist_file, text_file):
+    stop_regex = build_regex(stoplist_file)
+    sentences = get_sentences(text_file)
+    candidate_keywords = get_candidate_keywords(stop_regex, sentences)
+    keyword_sentences = make_keyword_sentences_dict(candidate_keywords, sentences)
+    return keyword_sentences
