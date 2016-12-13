@@ -1,5 +1,6 @@
 #POS Tagger
 import string, math
+import re
 
 def applypostagging(keywordsentencedict):
     #Grab training counts
@@ -9,6 +10,11 @@ def applypostagging(keywordsentencedict):
     for line in trainset:
         line = line.split(" ")
         for wordposinstance in line:
+            try:
+                wordposinstance.rindex("/")
+            except ValueError:
+                continue
+
             word = wordposinstance[:wordposinstance.rindex("/")]
             vocab.append(word)
             #split | to account for multiple pos tags
@@ -21,7 +27,7 @@ def applypostagging(keywordsentencedict):
                     postoworddict[individualpos][word] += 1
                 else:
                     postoworddict[individualpos][word] = 1
-                    
+
     #Unique vocab
     vocab = list(set(vocab))
 
@@ -59,7 +65,7 @@ def applypostagging(keywordsentencedict):
                         wordconditionalprob = float(wordoccurenceinpos + 1) / float(sum(postoworddict[pos].values()) + len(vocab))
                         #Use log space in base 10
                         wordconditionalprob = math.log10(wordconditionalprob)
-                        conditionals.append(wordconditionalprob) 
+                        conditionals.append(wordconditionalprob)
                     sumconditionals = sum(conditionals)
                     probabilitypos = math.log10(float(sum(postoworddict[pos].values())) / float(totalpostags))
                     score = sumconditionals + (probabilitysense)
@@ -90,6 +96,6 @@ def applypostagging(keywordsentencedict):
                 if 'NN' == sentencetags[i] or 'JJ' == sentencetags[i] or 'VB' == sentencetags[i] or 'VBD' == sentencetags[i] or 'VBG' == sentencetags[i] or 'VBN' == sentencetags[i] or 'VBP' == sentencetags[i] or 'VBZ' == sentencetags[i]:
                     nounadjectiveverb = True
             if nounadjectiveverb == False:
-                sentenceslist.remove(sentence)                
+                sentenceslist.remove(sentence)
         keywordsentencedict[keyword] = len(sentenceslist)
     return keywordsentencedict
