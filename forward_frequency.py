@@ -1,7 +1,6 @@
 import fileinput
 import re
 import sys
-import nltk.tokenize
 from sklearn import preprocessing
 import hashlib
 
