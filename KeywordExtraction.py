@@ -29,14 +29,19 @@ if len(sys.argv) == 3:
 else:
   print('Improper Usage: [data file] [stop-word file]')
 
+print('Raking...')
 keyword_dict = RAKE(stopwords_file, input_data_file)
+print('POSing...')
 keyword_sentence_dict = applypostagging(keyword_dict)
 
+print('Co-Occurrence graphing...')
 co_occurrence = CoGraph()
 co_occurrence.createGraph(keyword_sentence_dict)
 co_occurrence.calcScore()
 
+print('forward frequency...')
 ffscores = forward_freq_calc(keyword_sentence_dict, input_data_file)
 
+print('sorting and printing results...')
 keywords = sort_keywords(co_occurrence.scores, ffscores)
 print_keywords(keywords)
