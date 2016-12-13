@@ -41,7 +41,8 @@ def applypostagging(keywordsentencedict):
     count = 1
     #Iterate through each of the sentences containing a keyword
     for keyword in keywordsentencedict:
-        print('keyword: ' + keyword)
+        print('keyword:' + keyword + '/')
+        #if keyword == ''
         #print(count)
         #count += 1
         sentenceslist = keywordsentencedict[keyword]
