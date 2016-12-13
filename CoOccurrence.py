@@ -1,5 +1,8 @@
 
-
+# Vertex class represents a vertex in the Co-Occurrence graph.
+# Each vertex contains a word (the vertex), a set of edges,
+# or other words that it is connected to, and a number for
+# the frequency or number of times the word/vertex occurs.
 class Vertex:
   def __init__(self):
     self.word = ''
@@ -7,17 +10,30 @@ class Vertex:
     self.frequency = 0
     return
 
+  # function to initialize the word of the vertex
   def setWord(self, w):
     self.word = w
 
+  # function to add an edge to a vertex
   def addEdge(self, e):
     self.edges.add(e)
 
+  # function to increment the number of occurrences
+  # of a vertex.
   def incFrequency(self):
     self.frequency += 1
 
 Vertex()
 
+# CoGraph represents the Co-Occurrence graph. The graph instance
+# variable stores a dictionary representation of the graph. The
+# keys of the dictionary are the word or vertex, the values are
+# instances of the vertex class for the word.
+# The keywords instance variable is a copy of the candidate keyword
+# dictionary, extracted from the text files.
+# The scores instance variable is a dictionary with the keys being
+# the candidate keywords, and the values the graph score for each
+# keyword candidate.
 class CoGraph:
   def __init__(self):
     self.graph = {}
@@ -25,6 +41,8 @@ class CoGraph:
     self.keywords = {}
     return
 
+  # Member function to create the dictionary representation of the
+  # co-occurrence graph.
   def createGraph(self, keyword_map):
     self.keywords = keyword_map
     for key in keyword_map:
@@ -47,6 +65,8 @@ class CoGraph:
           self.graph[word] = v
     return
 
+  # Member function to create the dictionary containing the candidate
+  # keywords, and their respective scores.
   def calcScore(self):
     for key in self.keywords:
       key_score = 0.0
