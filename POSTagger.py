@@ -68,7 +68,7 @@ def applypostagging(keywordsentencedict):
                         conditionals.append(wordconditionalprob)
                     sumconditionals = sum(conditionals)
                     probabilitypos = math.log10(float(sum(postoworddict[pos].values())) / float(totalpostags))
-                    score = sumconditionals + (probabilitysense)
+                    score = sumconditionals + (probabilitypos)
                     #Append to scores list
                     scores.append([score, pos])
                 predictedpos = max(scores)[1]
