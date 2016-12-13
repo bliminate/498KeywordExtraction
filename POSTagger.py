@@ -99,12 +99,19 @@ def applypostagging(keywordsentencedict):
                             newword = newword + c
                     newword = newword.split(" ")
                 tokensfromkeyword.append(newword)
-            startingindexofkeyword = sentence.find(keyword)
+	    #Catch instances where keyword = represent and the actual word in the sentence is represented
+	    try:
+	        startingindexofkeyword = wordslst.index(wordsinkey[0])
+            except ValueError:
+		startingindexofkeyword = [word for word in wordslst if wordsinkey[0] in word]
+		startingindexofkeyword = wordslst.index(startingindexofkeyword[0]) 
             tokenindices = [startingindexofkeyword + i for i in range(0, len(tokensfromkeyword))]
             nounadjectiveverb = False
             print(tokenindices)
             print(len(tokensfromkeyword))
             print(sentencetags)
+	    print(sentence)
+	    print(startingindexofkeyword)
             for i in tokenindices:
                 if 'NN' == sentencetags[i] or 'JJ' == sentencetags[i] or 'VB' == sentencetags[i] or 'VBD' == sentencetags[i] or 'VBG' == sentencetags[i] or 'VBN' == sentencetags[i] or 'VBP' == sentencetags[i] or 'VBZ' == sentencetags[i]:
                     nounadjectiveverb = True
