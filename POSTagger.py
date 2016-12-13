@@ -38,8 +38,11 @@ def applypostagging(keywordsentencedict):
         totalpostags += sum(postoworddict[key].values())
 
     print('iterating over sentences containing keywords...')
+    count = 1
     #Iterate through each of the sentences containing a keyword
     for keyword in keywordsentencedict:
+        print(count)
+        count += 1
         sentenceslist = keywordsentencedict[keyword]
         #Iterate through each sentence
         for sentence in sentenceslist:
