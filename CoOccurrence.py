@@ -65,9 +65,9 @@ keyword_map = {
   'information':1, 'summary':1, 'global':1, 'information':1
 }
 
-g = CoGraph()
-g.createGraph(keyword_map)
-g.calcScore()
+#g = CoGraph()
+#g.createGraph(keyword_map)
+#g.calcScore()
 
-for key, value in g.scores.iteritems():
-  print(key + ': ' + str(value))
+#for key, value in g.scores.iteritems():
+#  print(key + ': ' + str(value))
