@@ -1,7 +1,7 @@
 # 498KeywordExtraction
 
 ## Usage
-To run this code, run "python KeywordExtraction.py <dataset-path> <stoplist-path>"
+To run this code, run "python KeywordExtraction.py \<dataset-path\> \<stoplist-path\>"
 
 ## About
 This repo was created by Andrew Chen, Brian Lim, Chris Raveendra, and Matt Kim as a final project for the Natural Language Processing class at the University of Michigan.
