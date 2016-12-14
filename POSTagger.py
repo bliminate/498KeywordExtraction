@@ -3,7 +3,6 @@ import string, math
 import re
 
 def applypostagging(keywordsentencedict):
-    print(str(len(keywordsentencedict)) + " candidate keywords")
     #Grab training counts
     trainset = open("POS.train.large",'r')
     postoworddict = {}
@@ -41,13 +40,12 @@ def applypostagging(keywordsentencedict):
     count = 1
     #Iterate through each of the sentences containing a keyword
     for keyword in keywordsentencedict:
-        print('keyword:' + keyword + '/')
+        #print('keyword:' + keyword + '/')
         if keyword == '':
             continue
-        #print(count)
         #count += 1
         sentenceslist = keywordsentencedict[keyword]
-        print(str(len(sentenceslist)) + " sentences to parse for the keyword...")
+        #print(str(len(sentenceslist)) + " sentences to parse for the keyword...")
         #Iterate through each sentence
         for sentence in sentenceslist:
             sentencetags = []
@@ -107,11 +105,6 @@ def applypostagging(keywordsentencedict):
 		startingindexofkeyword = wordslst.index(startingindexofkeyword[0]) 
             tokenindices = [startingindexofkeyword + i for i in range(0, len(tokensfromkeyword))]
             nounadjectiveverb = False
-            print(tokenindices)
-            print(len(tokensfromkeyword))
-            print(sentencetags)
-	    print(sentence)
-	    print(startingindexofkeyword)
             for i in tokenindices:
                 if 'NN' == sentencetags[i] or 'JJ' == sentencetags[i] or 'VB' == sentencetags[i] or 'VBD' == sentencetags[i] or 'VBG' == sentencetags[i] or 'VBN' == sentencetags[i] or 'VBP' == sentencetags[i] or 'VBZ' == sentencetags[i]:
                     nounadjectiveverb = True

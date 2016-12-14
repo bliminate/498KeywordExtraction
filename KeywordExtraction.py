@@ -12,7 +12,7 @@ def sort_keywords(co_occurrence_scores, forfreq_scores):
     temp_tup = keyword, temp_score
     keywords.append(temp_tup)
 
-  keywords.sort(key=lambda x: x[0], reverse=True)
+  keywords.sort(key=lambda x: x[1], reverse=True)
   return keywords
 
 def print_keywords(keywords):
