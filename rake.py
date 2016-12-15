@@ -10,6 +10,8 @@ def build_regex(stopwords_file):
     stopword_list = get_stopwords(stopwords_file)
     stopword_regex_list = []
     for stopword in stopword_list:
+        # looks for stopwords including at the beginning of the sentence 
+        #but excluding those part of other words
         stopword_regex = r'\b' + stopword + r'(?![\w-])'
         stopword_regex_list.append(stopword_regex)
     stop_regex = re.compile('|'.join(stopword_regex_list), re.IGNORECASE)
@@ -18,6 +20,7 @@ def build_regex(stopwords_file):
 def get_sentences(text_file):
     with open(text_file, 'r') as myfile:
         text = myfile.read()
+    # for punctuation
     punctuation_regex = re.compile('[.,!?:;\n\"\'()-]')
     sentences = punctuation_regex.split(text)
     return sentences
